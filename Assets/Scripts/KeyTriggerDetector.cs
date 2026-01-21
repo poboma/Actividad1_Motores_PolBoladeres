@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class KeyTriggerDetector : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class KeyTriggerDetector : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] TextMeshProUGUI textoKey;
     [SerializeField] TextMeshProUGUI textoDoor;
+    [Header("AUDIO")] 
+    [SerializeField] private AudioSource llavesAudio;
+    [SerializeField] private AudioSource puertaAudio;
+
 
     private ColorKey detectedKey;
     private void Update()
@@ -55,8 +60,19 @@ public class KeyTriggerDetector : MonoBehaviour
             {
                 door.SetActive(false);
             }
+                       
             detectedKey.gameObject.SetActive(false);
+            StartCoroutine(PlayDoorSequence());
         }
+    }
+
+    private IEnumerator PlayDoorSequence()
+    {
+        llavesAudio.Play();
+
+       yield return new WaitForSeconds(llavesAudio.clip.length);
+
+        puertaAudio.Play();
     }
 }
 

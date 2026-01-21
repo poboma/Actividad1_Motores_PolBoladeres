@@ -6,6 +6,9 @@ using static UnityEditor.PlayerSettings.SplashScreen;
 
 public class MovimientoCapsula : MonoBehaviour
 {
+    [Header("AUDIO")]
+    [SerializeField] private AudioSource pasosAudio;
+    [SerializeField] private float stepThreshold = 0.1f;
     [Header("MOVIMIENTO JUGADOR")]
     [SerializeField] public float movementSpeed = 5f;
     [SerializeField] public float turnSpeed = 90f;
@@ -41,20 +44,30 @@ public class MovimientoCapsula : MonoBehaviour
         cameraRight.y = 0;
         cameraRight.Normalize();
         Vector3 movement = (cameraForward * rawMove.y + cameraRight * rawMove.x) * movementSpeed*-1;
+        if (movement.magnitude > stepThreshold )
+        {
+            if (!pasosAudio.isPlaying)
+                pasosAudio.Play();
+            
+        }
+        else
+        {
+            pasosAudio.Stop();
+        }
 
-        //float turn = Input.GetAxis("Horizontal"); 
-        //float travel = Input.GetAxis("Vertical");
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    resetLaberinth();
-        //}
+            //float turn = Input.GetAxis("Horizontal"); 
+            //float travel = Input.GetAxis("Vertical");
+            //if (Input.GetKeyDown(KeyCode.R))
+            //{
+            //    resetLaberinth();
+            //}
 
-        //transform.Rotate(0f, turn * turnSpeed * Time.deltaTime, 0f);
-        //Vector3 localMovement = new Vector3(0, 0, travel * movementSpeed);
-        //Vector3 worldMovement = transform.TransformDirection(localMovement);
-        //jugador.Move(worldMovement * Time.deltaTime);
+            //transform.Rotate(0f, turn * turnSpeed * Time.deltaTime, 0f);
+            //Vector3 localMovement = new Vector3(0, 0, travel * movementSpeed);
+            //Vector3 worldMovement = transform.TransformDirection(localMovement);
+            //jugador.Move(worldMovement * Time.deltaTime);
 
-        jugador.Move(movement * Time.deltaTime);
+            jugador.Move(movement * Time.deltaTime);
     }
 
     private void startOver()
