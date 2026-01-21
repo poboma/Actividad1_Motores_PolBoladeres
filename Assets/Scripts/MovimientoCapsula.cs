@@ -11,7 +11,11 @@ public class PlayerMovementSimple : MonoBehaviour
     private void Start()
     {
         jugador = GetComponent<CharacterController>();
+        transform.position = ubicacionInicial.position;
+        transform.forward = ubicacionInicial.forward;
     }
+
+    
     void Update()
     {
         float turn = Input.GetAxis("Horizontal"); 
