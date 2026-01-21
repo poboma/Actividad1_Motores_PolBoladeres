@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5966697234720545254}
   - component: {fileID: 900986326639568215}
   - component: {fileID: 7429039806291093691}
+  - component: {fileID: 4445659969601630099}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -111,3 +112,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4445659969601630099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955174565566704742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a542a2b0c3cc00348a276007b4a48c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger

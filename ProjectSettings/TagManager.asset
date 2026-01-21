@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - KeyTrigger
+  - DoorTrigger
+  - Purple
+  - Green
+  - Yellow
+  - Red
+  - Orange
   layers:
   - Default
   - TransparentFX
@@ -12,8 +19,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - KeyTrigger
+  - DoorTrigger
   - 
   - 
   - 

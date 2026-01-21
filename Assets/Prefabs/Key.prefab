@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6558787990852148458}
   - component: {fileID: 5223190022622873059}
   - component: {fileID: 1463667135815914414}
+  - component: {fileID: 22546873651077817}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -111,3 +112,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &22546873651077817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509572861921943544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd703fc955c8b444a8315ea042dc31b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorKey
+  doorTag: 

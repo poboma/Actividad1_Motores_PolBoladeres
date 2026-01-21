@@ -1,28 +1,28 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class GoalTrigger : MonoBehaviour
 {
-    public GameObject ControlsUI;
+    //public GameObject ControlsUI;
     public Transform ubicacionFinal;
     public Vector3 direccionFinal;
-    public GameObject textoRestart;
+    //public GameObject textoRestart;
     public GameObject ubicacionInicial;
     public GameObject particulas;
 
     private CharacterController jugador;
-    private MonoBehaviour MovimientoCapsula;
+    //private MovimientoCapsula movimiento;
     private bool llegaMeta = false;
 
     private void Start()
     {
-        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
-        MovimientoCapsula = jugador.GetComponent<MonoBehaviour>();
-        textoRestart.SetActive(false);
+        jugador = GameObject.FindGameObjectWithTag("Player")
+                            .GetComponent<CharacterController>();
+
     }
 
     private void Update()
     {
-        
+
         if (llegaMeta && Input.GetKeyDown(KeyCode.R))
         {
             ReiniciarLaberinto();
@@ -32,37 +32,32 @@ public class GoalTrigger : MonoBehaviour
     {
         if (!llegaMeta && other.CompareTag("Player"))
         {
-            if (jugador != null)
-            {
-                jugador.enabled = false;
-                jugador.transform.position = ubicacionFinal.position;
-                jugador.transform.forward = direccionFinal.normalized;
-                jugador.enabled = true;
-                if (MovimientoCapsula != null)
-                    MovimientoCapsula.enabled = false;
-            }
+                
+            jugador.enabled = false;
+            jugador.transform.position = ubicacionFinal.position;
+            jugador.transform.forward = direccionFinal.normalized*-1;
+            jugador.enabled = true;
 
-            ControlsUI.SetActive(false);  
-            textoRestart.SetActive(true);
             particulas.SetActive(true);
-            llegaMeta = true;
+            GameManager.instance.EnterGoal();
+
+                llegaMeta = true;
+           
         }
     }
     private void ReiniciarLaberinto()
     {
-        if (jugador != null)
-        {
-            jugador.enabled = false;
-            jugador.transform.position = ubicacionInicial.transform.position;
-            jugador.transform.forward = Vector3.forward*-1; 
-            jugador.enabled = true;
-            if (MovimientoCapsula != null)
-                MovimientoCapsula.enabled = true;
-        }
+        
+        jugador.enabled = false;
+        jugador.transform.position = ubicacionInicial.transform.position;
+        jugador.transform.forward = Vector3.forward; 
+        jugador.enabled = true;
 
-        ControlsUI.SetActive(true);   
-        textoRestart.SetActive(false);
-        particulas.SetActive(false);    
+        
+        particulas.SetActive(false);   
+        GameManager.instance.EnterGameplay();
         llegaMeta = false;
     }
+
+
 }

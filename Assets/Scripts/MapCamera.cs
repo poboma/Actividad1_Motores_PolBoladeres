@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class MapCamera : MonoBehaviour
 {
-    public GameObject miniMapa;   
-    [SerializeField] public KeyCode toggleKey; 
+    public GameObject miniMapa;
 
-    void Update()
+    public void ShowMap(bool show)
     {
-        if (Input.GetKeyDown(toggleKey))
-        {
-            miniMapa.SetActive(!miniMapa.activeSelf);
-        }
+        miniMapa.SetActive(show);
     }
 }
