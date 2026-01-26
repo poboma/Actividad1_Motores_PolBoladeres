@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
-using static UnityEditor.PlayerSettings.SplashScreen;
+
 
 public class MovimientoCapsula : MonoBehaviour
 {
@@ -39,8 +39,8 @@ public class MovimientoCapsula : MonoBehaviour
     private void Start()
     {
 
-       //transform.position = ubicacionInicial.position;
-       // transform.rotation = ubicacionInicial.rotation;
+       transform.position = ubicacionInicial.position;
+        transform.rotation = ubicacionInicial.rotation;
 
     }
     void Update()

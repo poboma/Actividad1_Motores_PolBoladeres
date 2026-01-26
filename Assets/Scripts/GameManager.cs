@@ -110,7 +110,11 @@ public class GameManager : MonoBehaviour
 
         controlsUI.SetActive(false);
         restartUI.SetActive(true);
-        
+        trapTPUI.SetActive(false);
+        trapKeyUI.SetActive(false);
+        fakeKeyCanvas.SetActive(false);
+        trapFruitUI.SetActive(false);
+        goodFruitUI.SetActive(false);
         EndAudio.Play();
         
 
