@@ -11,11 +11,18 @@ public class MovimientoCapsula : MonoBehaviour
     [SerializeField] private float stepThreshold = 0.1f;
     [Header("MOVIMIENTO JUGADOR")]
     [SerializeField] public float movementSpeed = 5f;
-    [SerializeField] public float turnSpeed = 90f;
+    //[SerializeField] public float turnSpeed = 90f;
     [Header("CONTROL DE CAMARA")]
     [SerializeField] public float mouseSensitivity = 50f;
     [SerializeField] public Transform cameraHolder;
     [SerializeField] public bool canLook = true;
+
+    [Header("VELOCIDAD DINÁMICA")]
+    public float currentSpeed; 
+    public float defaultSpeed;
+
+    public bool invertControls = false;
+    public bool invertedMouse = false;
     Vector2 rawMove = Vector2.zero;
     private float xRotation = 0f;
 
@@ -26,12 +33,14 @@ public class MovimientoCapsula : MonoBehaviour
     private void Awake()
     {
         jugador = GetComponent<CharacterController>();
+        defaultSpeed = movementSpeed;
+        currentSpeed = defaultSpeed;
     }
     private void Start()
     {
 
-        //transform.position = ubicacionInicial.position;
-        //transform.rotation = ubicacionInicial.rotation;
+       //transform.position = ubicacionInicial.position;
+       // transform.rotation = ubicacionInicial.rotation;
 
     }
     void Update()
@@ -43,7 +52,13 @@ public class MovimientoCapsula : MonoBehaviour
         Vector3 cameraRight = cameraHolder.right;
         cameraRight.y = 0;
         cameraRight.Normalize();
-        Vector3 movement = (cameraForward * rawMove.y + cameraRight * rawMove.x) * movementSpeed*-1;
+        Vector3 movement = (cameraForward * rawMove.y + cameraRight * rawMove.x);
+
+        if (invertControls)
+            movement = -movement; 
+
+        movement *= currentSpeed * -1;
+        jugador.Move(movement * Time.deltaTime);
         if (movement.magnitude > stepThreshold )
         {
             if (!pasosAudio.isPlaying)
@@ -89,15 +104,17 @@ public class MovimientoCapsula : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         if (!canLook) return;
+
         Vector2 lookDelta = context.ReadValue<Vector2>();
 
-        float mouseX = lookDelta.x * mouseSensitivity * Time.deltaTime;
-        float mouseY = lookDelta.y * mouseSensitivity * Time.deltaTime*-1;
+        float invertFactor = invertedMouse ? -1f : 1f;
 
-        
+        float mouseX = lookDelta.x * mouseSensitivity * Time.deltaTime * invertFactor;
+        float mouseY = lookDelta.y * mouseSensitivity * Time.deltaTime * -1f * invertFactor;
+
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        
+
         cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
@@ -107,10 +124,14 @@ public class MovimientoCapsula : MonoBehaviour
             startOver();
     }
 
-    //public void OnInteract(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
+    public void SetSpeed(float movementSpeed)
+    {
+        currentSpeed = movementSpeed;
+    }
 
-    //}
+    public void ResetSpeed()
+    {
+        currentSpeed = defaultSpeed;
+    }
 }
 
