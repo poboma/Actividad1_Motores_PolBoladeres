@@ -12,6 +12,7 @@ TagManager:
   - Red
   - Orange
   - Fruits
+  - Boton
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject trapKeyUI;
     public GameObject goodFruitUI;
     public GameObject trapFruitUI;
+    public GameObject puntero;
 
     [Header("MINIMAPA")]
     public MapCamera mapCamera;
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
         fakeKeyCanvas.SetActive(false);
         trapFruitUI.SetActive(false);
         goodFruitUI.SetActive(false) ;
+        puntero.SetActive(true);
 
         movimientoCapsula.enabled = true;
         movimientoCapsula.canLook = true;
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
         fakeKeyCanvas.SetActive(false);
         trapFruitUI.SetActive(false);
         goodFruitUI.SetActive(false);
+        puntero.SetActive(false);
         EndAudio.Play();
         
 
