@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public GameObject trapKeyUI;
     public GameObject goodFruitUI;
     public GameObject trapFruitUI;
-
     public GameObject puntero;
 
     [Header("PUNTUACIÓN")]
@@ -59,6 +58,12 @@ public class GameManager : MonoBehaviour
     public AudioSource EndAudio;
     public AudioSource ambientMusic;
 
+    [Header("VIDAS")]
+    public int maxVidas = 4;
+    public int vidaActual;
+    private bool puedeRecibirDaño = true;
+    public float cooldownDaño = 1.5f;
+
     private GameState currentState;
 
     public enum GameState
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
     #region GAMEPLAY/GOAL
     public void EnterGameplay()
     {
-
+        vidaActual = maxVidas;
         currentState = GameState.Gameplay;
         transform.position = ubicacionInicial.position;
         transform.rotation = ubicacionInicial.rotation;
@@ -201,6 +206,8 @@ public class GameManager : MonoBehaviour
 
         mapVisible = !mapVisible;
         mapCamera.ShowMap(mapVisible);
+        puntero.SetActive(!mapVisible);
+
     }
     #endregion
 
@@ -310,6 +317,37 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+
+    #endregion
+
+
+    public void DamagePlayer(int damage)
+    {
+        if (!puedeRecibirDaño) return;
+
+        vidaActual -= damage;
+        vidaActual = Mathf.Clamp(vidaActual, 0, maxVidas);
+        Debug.Log("auch!");
+        if (vidaActual <= 0)
+            GameOver();
+        else
+            StartCoroutine(Invulnerability());
+    }
+
+    public void GameOver()
+    {
+        vidaActual = maxVidas;
+        movimientoCapsula.startOver();
+    }
+
+    IEnumerator Invulnerability()
+    {
+        puedeRecibirDaño = false;
+        yield return new WaitForSeconds(cooldownDaño);
+        puedeRecibirDaño = true;
+    }
 }
-#endregion
+
+
 

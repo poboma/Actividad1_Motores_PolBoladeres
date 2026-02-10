@@ -37,9 +37,9 @@ public class CursorDisparador : MonoBehaviour
                     hit.collider.GetComponent<Boton>().Pulsar();
                 }
             }
-            Debug.Log(Mouse.current.position.ReadValue());
+            //Debug.Log(Mouse.current.position.ReadValue());
             // Muestra el rayo en la escena (no en el juego)
-            Debug.DrawRay(ray.origin, ray.direction * 1f, Color.red, 0.1f);
+            //Debug.DrawRay(ray.origin, ray.direction * 1f, Color.red, 0.1f);
         }
     }
 }

@@ -5,6 +5,7 @@ public class EnemyAI : MonoBehaviour
 {
     public enum EnemyState { Patrol, Chase }
 
+    
     [Header("REFERENCIAS")]
     public NavMeshAgent agent;
     public Transform player;
@@ -114,4 +115,5 @@ public class EnemyAI : MonoBehaviour
         if (distance > losePlayerDistance)
             currentState = EnemyState.Patrol;
     }
+
 }

@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
 
 
 public class MovimientoCapsula : MonoBehaviour
@@ -26,11 +27,12 @@ public class MovimientoCapsula : MonoBehaviour
 
     [Header("VARIABLES")]
 
+    public ScoreManager scoreManager;
     public bool invertControls = false;
     public bool invertedMouse = false;
     Vector2 rawMove = Vector2.zero;
     private float xRotation = 0f;
-
+    
     public Transform ubicacionInicial;
     private CharacterController jugador;
     
@@ -92,10 +94,10 @@ public class MovimientoCapsula : MonoBehaviour
             jugador.Move(movement * Time.deltaTime);
     }
 
-    private void startOver()
+    public void startOver()
     {
         jugador.enabled = false;
-
+        scoreManager.ResetScore();
         transform.position = ubicacionInicial.position;
         transform.rotation = ubicacionInicial.rotation;
 
@@ -103,6 +105,7 @@ public class MovimientoCapsula : MonoBehaviour
         cameraHolder.localRotation = Quaternion.identity;
 
         jugador.enabled = true;
+        
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -129,6 +132,7 @@ public class MovimientoCapsula : MonoBehaviour
     {
         if (context.performed)
             startOver();
+        
     }
 
     public void SetSpeed(float movementSpeed)
