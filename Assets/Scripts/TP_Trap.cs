@@ -8,7 +8,7 @@ public class FakePathTrigger : MonoBehaviour
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = Object.FindFirstObjectByType < GameManager >();
     }
 
     private void OnTriggerEnter(Collider other)
