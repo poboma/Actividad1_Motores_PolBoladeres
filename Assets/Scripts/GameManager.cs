@@ -13,7 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject trapKeyUI;
     public GameObject goodFruitUI;
     public GameObject trapFruitUI;
+
     public GameObject puntero;
+
+    [Header("PUNTUACIÓN")]
+    public ScoreManager scoreManager;
+
 
     [Header("MINIMAPA")]
     public MapCamera mapCamera;
@@ -32,13 +37,13 @@ public class GameManager : MonoBehaviour
     public float spinDuration = 1.5f;
     public float spinSpeed = 720f;
     public float FreezeTime = 1f;
-    
+
 
     [Header("LLAVE TRAMPA")]
     public GameObject fakeKeyCanvas;
     public float speedMultiplier = 0.3f;
     public float trapDuration = 25f;
-    
+
 
     [Header("FRUITS")]
     public float pepperDuration = 15f;
@@ -53,7 +58,7 @@ public class GameManager : MonoBehaviour
     public AudioSource puertaAudio;
     public AudioSource EndAudio;
     public AudioSource ambientMusic;
-    
+
     private GameState currentState;
 
     public enum GameState
@@ -77,7 +82,7 @@ public class GameManager : MonoBehaviour
     #region GAMEPLAY/GOAL
     public void EnterGameplay()
     {
-        
+
         currentState = GameState.Gameplay;
         transform.position = ubicacionInicial.position;
         transform.rotation = ubicacionInicial.rotation;
@@ -88,7 +93,7 @@ public class GameManager : MonoBehaviour
         restartUI.SetActive(false);
         fakeKeyCanvas.SetActive(false);
         trapFruitUI.SetActive(false);
-        goodFruitUI.SetActive(false) ;
+        goodFruitUI.SetActive(false);
         puntero.SetActive(true);
 
         movimientoCapsula.enabled = true;
@@ -119,7 +124,7 @@ public class GameManager : MonoBehaviour
         goodFruitUI.SetActive(false);
         puntero.SetActive(false);
         EndAudio.Play();
-        
+
 
         movimientoCapsula.enabled = false;
         movimientoCapsula.canLook = false;
@@ -137,6 +142,8 @@ public class GameManager : MonoBehaviour
     #region TRAMPAS
     public void EnterTPTrap(Transform respawnUbi)
     {
+        scoreManager.RemovePoints(5);
+
         currentState = GameState.Trap;
 
         trapTPUI.SetActive(true);
@@ -200,6 +207,8 @@ public class GameManager : MonoBehaviour
     #region LLAVE FALSA
     public void TriggerFakeKeyTrap()
     {
+        scoreManager.RemovePoints(10);
+
         currentState = GameState.Trap;
 
 
@@ -208,7 +217,7 @@ public class GameManager : MonoBehaviour
 
         fakeKeyAudio.Play();
         llavesAudio.Play();
-        
+
 
         StartCoroutine(FakeKeySequence());
     }
@@ -229,6 +238,8 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoorWithKey(string doorTag, GameObject keyObject)
     {
+        scoreManager.AddPoints(10);
+
         keyObject.SetActive(false);
 
         GameObject[] doors = GameObject.FindGameObjectsWithTag(doorTag);
@@ -251,6 +262,8 @@ public class GameManager : MonoBehaviour
     #region FRUITS
     public void TriggerTrapFruit()
     {
+        scoreManager.RemovePoints(5);
+
         currentState = GameState.Trap;
 
         trapFruitUI.SetActive(true);
@@ -278,8 +291,10 @@ public class GameManager : MonoBehaviour
         goodFruitUI.SetActive(true);
         fruitAudio.Play();
 
+        scoreManager.AddPoints(5);
+
         StartCoroutine(pepperEffect());
-        
+
     }
 
     private IEnumerator pepperEffect()
@@ -296,5 +311,5 @@ public class GameManager : MonoBehaviour
 
 
 }
-    #endregion
+#endregion
 
