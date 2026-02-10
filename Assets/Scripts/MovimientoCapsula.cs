@@ -21,6 +21,11 @@ public class MovimientoCapsula : MonoBehaviour
     public float currentSpeed; 
     public float defaultSpeed;
 
+    [Header("ANIMACIONES")]
+    public Animator anim;
+
+    [Header("VARIABLES")]
+
     public bool invertControls = false;
     public bool invertedMouse = false;
     Vector2 rawMove = Vector2.zero;
@@ -40,8 +45,8 @@ public class MovimientoCapsula : MonoBehaviour
     {
 
        transform.position = ubicacionInicial.position;
-        transform.rotation = ubicacionInicial.rotation;
-
+       transform.rotation = ubicacionInicial.rotation;
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -63,11 +68,13 @@ public class MovimientoCapsula : MonoBehaviour
         {
             if (!pasosAudio.isPlaying)
                 pasosAudio.Play();
+            anim.SetBool("isWalking", true);
             
         }
         else
         {
             pasosAudio.Stop();
+            anim.SetBool("isWalking", false);
         }
 
             //float turn = Input.GetAxis("Horizontal"); 
