@@ -5,7 +5,11 @@ public class Trampa_Movil : MonoBehaviour
 {
     public float distancia = 5f;
     public float velocidad = 2f;
+<<<<<<< Updated upstream
     public Vector3 direccion = Vector3.right;
+=======
+    public Vector3 direccion = Vector3.left;
+>>>>>>> Stashed changes
 
     private Vector3 posicionInicial;
     private Rigidbody rb;

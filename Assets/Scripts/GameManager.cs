@@ -53,7 +53,11 @@ public class GameManager : MonoBehaviour
     public AudioSource puertaAudio;
     public AudioSource EndAudio;
     public AudioSource ambientMusic;
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     private GameState currentState;
 
     public enum GameState
@@ -77,7 +81,10 @@ public class GameManager : MonoBehaviour
     #region GAMEPLAY/GOAL
     public void EnterGameplay()
     {
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
         currentState = GameState.Gameplay;
         transform.position = ubicacionInicial.position;
         transform.rotation = ubicacionInicial.rotation;
@@ -298,3 +305,11 @@ public class GameManager : MonoBehaviour
 }
     #endregion
 
+<<<<<<< Updated upstream
+=======
+
+}
+
+
+
+>>>>>>> Stashed changes
