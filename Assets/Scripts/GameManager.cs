@@ -13,7 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject trapKeyUI;
     public GameObject goodFruitUI;
     public GameObject trapFruitUI;
+
     public GameObject puntero;
+
+    [Header("PUNTUACIÓN")]
+    public ScoreManager scoreManager;
+
 
     [Header("MINIMAPA")]
     public MapCamera mapCamera;
@@ -137,6 +142,8 @@ public class GameManager : MonoBehaviour
     #region TRAMPAS
     public void EnterTPTrap(Transform respawnUbi)
     {
+        scoreManager.RemovePoints(5);
+
         currentState = GameState.Trap;
 
         trapTPUI.SetActive(true);
@@ -200,6 +207,8 @@ public class GameManager : MonoBehaviour
     #region LLAVE FALSA
     public void TriggerFakeKeyTrap()
     {
+        scoreManager.RemovePoints(10);
+
         currentState = GameState.Trap;
 
 
@@ -229,6 +238,8 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoorWithKey(string doorTag, GameObject keyObject)
     {
+        scoreManager.AddPoints(10);
+
         keyObject.SetActive(false);
 
         GameObject[] doors = GameObject.FindGameObjectsWithTag(doorTag);
@@ -251,6 +262,8 @@ public class GameManager : MonoBehaviour
     #region FRUITS
     public void TriggerTrapFruit()
     {
+        scoreManager.RemovePoints(5);
+
         currentState = GameState.Trap;
 
         trapFruitUI.SetActive(true);
@@ -277,6 +290,8 @@ public class GameManager : MonoBehaviour
     {
         goodFruitUI.SetActive(true);
         fruitAudio.Play();
+        
+        scoreManager.AddPoints(5);
 
         StartCoroutine(pepperEffect());
         
