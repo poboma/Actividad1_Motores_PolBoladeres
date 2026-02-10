@@ -1503,6 +1503,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1266536591}
   m_SourcePrefab: {fileID: 100100000, guid: d27021cd19462844c9401ba927e7e80d, type: 3}
+--- !u!1 &233944219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+  m_PrefabInstance: {fileID: 1607264044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &255627901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8616,6 +8621,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2171101989624241999, guid: 84bb4e4c0949bd14eb6402e1797f2575, type: 3}
   m_PrefabInstance: {fileID: 969017900}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &980401050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+  m_PrefabInstance: {fileID: 1069875396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &980823480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9571,7 +9581,10 @@ PrefabInstance:
     - {fileID: 8426114225605770951, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1107031823}
   m_SourcePrefab: {fileID: 100100000, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
 --- !u!4 &1076569323 stripped
 Transform:
@@ -9815,6 +9828,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
   m_PrefabInstance: {fileID: 1069875396}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1107031823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980401050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e264eb7e82e6dd42b0ecea38db2c18a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemigo_RestaVida
 --- !u!1001 &1110242609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10731,6 +10756,11 @@ MonoBehaviour:
   vidaMaxima: 4
   vidaActual: 0
   movimientoCapsula: {fileID: 1195567909}
+  Vida1: {fileID: 1848185775}
+  Vida2: {fileID: 189280876}
+  Vida3: {fileID: 1182885516}
+  Vida4: {fileID: 289131458}
+  "CooldownDa\xF1o": 2
 --- !u!1 &1241004529
 GameObject:
   m_ObjectHideFlags: 0
@@ -12384,7 +12414,10 @@ PrefabInstance:
     - {fileID: 8426114225605770951, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1601069944}
   m_SourcePrefab: {fileID: 100100000, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
 --- !u!1001 &1402878797
 PrefabInstance:
@@ -12455,6 +12488,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84bb4e4c0949bd14eb6402e1797f2575, type: 3}
+--- !u!1 &1405804187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+  m_PrefabInstance: {fileID: 1398715415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1411469929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2171101989624241999, guid: 84bb4e4c0949bd14eb6402e1797f2575, type: 3}
@@ -13895,6 +13933,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21385bea6a17af44b057f45c5900fd3, type: 3}
+--- !u!1 &1560000315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+  m_PrefabInstance: {fileID: 9042653894168829813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1589348232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14018,6 +14061,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
   m_PrefabInstance: {fileID: 1398715415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1601069944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405804187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e264eb7e82e6dd42b0ecea38db2c18a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemigo_RestaVida
 --- !u!1001 &1606402926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14196,7 +14251,10 @@ PrefabInstance:
     - {fileID: 8426114225605770951, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2033617538}
   m_SourcePrefab: {fileID: 100100000, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
 --- !u!1001 &1633528876
 PrefabInstance:
@@ -14481,6 +14539,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
   m_PrefabInstance: {fileID: 9042653894168829813}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1675186560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560000315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e264eb7e82e6dd42b0ecea38db2c18a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemigo_RestaVida
 --- !u!1 &1677847438
 GameObject:
   m_ObjectHideFlags: 0
@@ -17095,6 +17165,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
   m_PrefabInstance: {fileID: 1607264044}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2033617538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233944219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e264eb7e82e6dd42b0ecea38db2c18a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemigo_RestaVida
 --- !u!1 &2041203649
 GameObject:
   m_ObjectHideFlags: 0
@@ -17241,6 +17323,7 @@ MonoBehaviour:
   goodFruitUI: {fileID: 481555269}
   trapFruitUI: {fileID: 568805509}
   puntero: {fileID: 600163539}
+  CanvasVida: {fileID: 0}
   scoreManager: {fileID: 1705311417}
   mapCamera: {fileID: 1195567907}
   jugador: {fileID: 1195567921}
@@ -19448,7 +19531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 6310994200052927929, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19486,7 +19569,10 @@ PrefabInstance:
     - {fileID: 8426114225605770951, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 63549503358396712, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1675186560}
   m_SourcePrefab: {fileID: 100100000, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

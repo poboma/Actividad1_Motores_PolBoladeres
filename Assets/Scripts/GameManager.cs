@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject goodFruitUI;
     public GameObject trapFruitUI;
     public GameObject puntero;
+    public GameObject CanvasVida;
 
     [Header("PUNTUACIÓN")]
     public ScoreManager scoreManager;

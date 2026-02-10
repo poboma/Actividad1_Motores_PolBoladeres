@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8846725687230366277}
   - component: {fileID: 4001079581798811621}
   - component: {fileID: 193342357225401187}
-  - component: {fileID: 8426114225605770951}
   - component: {fileID: 8728863312856397210}
   m_Layer: 0
   m_Name: Enemy
@@ -180,19 +179,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boton
   boton: {fileID: 63549503358396712}
   scoreManager: {fileID: 0}
---- !u!114 &8426114225605770951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63549503358396712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c017172c11e85074dae5ad339bc1d1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  damage: 1
 --- !u!54 &8728863312856397210
 Rigidbody:
   m_ObjectHideFlags: 0
