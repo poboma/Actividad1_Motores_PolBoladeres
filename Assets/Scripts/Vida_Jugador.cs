@@ -7,10 +7,10 @@ public class Vida_Jugador : MonoBehaviour
     public int vidaMaxima = 4;
     public int vidaActual;
     public MovimientoCapsula movimientoCapsula;
-    public GameObject Vida1;
-    public GameObject Vida2;
-    public GameObject Vida3;
-    public GameObject Vida4;
+    public GameObject[] vidas;
+    //public GameObject Vida2;
+    //public GameObject Vida3;
+    //public GameObject Vida4;
 
     private bool PuedeRecibirDaño = true;
     public float CooldownDaño = 2.0f;
@@ -18,10 +18,7 @@ public class Vida_Jugador : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
-        Vida1.SetActive(true);
-        Vida2.SetActive(true);
-        Vida3.SetActive(true);
-        Vida4.SetActive(true);
+        ActualizarUI();
     }
 
     public void CambiarVida(int cantidad)
@@ -37,25 +34,27 @@ public class Vida_Jugador : MonoBehaviour
 
         Debug.Log("Vida actual: " + vidaActual);
 
-        if (vidaActual == vidaMaxima)
-        {
-            return;
-        }
+        ActualizarUI();
 
-        if (vidaActual == 3)
-        {
-            Vida4.SetActive(false);
-        }
+        //if (vidaActual == vidaMaxima)
+        //{
+        //    return;
+        //}
 
-        if (vidaActual == 2)
-        {
-            Vida3.SetActive(false);
-        }
+        //if (vidaActual == 3)
+        //{
+        //    Vida4.SetActive(false);
+        //}
 
-        if (vidaActual == 1)
-        {
-            Vida2.SetActive(false);
-        }
+        //if (vidaActual == 2)
+        //{
+        //    Vida3.SetActive(false);
+        //}
+
+        //if (vidaActual == 1)
+        //{
+        //    Vida2.SetActive(false);
+        //}
 
         if (vidaActual <= 0)
         {
@@ -69,7 +68,13 @@ public class Vida_Jugador : MonoBehaviour
 
 
     }
-
+    void ActualizarUI()
+    {
+        for (int i = 0; i < vidas.Length; i++)
+        {
+            vidas[i].SetActive(i < vidaActual);
+        }
+    }
     IEnumerator Invencibilidad()
     {
         PuedeRecibirDaño = false;
@@ -80,11 +85,17 @@ public class Vida_Jugador : MonoBehaviour
     void Morir()
     {
         movimientoCapsula.startOver();
+        EnemyAI[] enemigos = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
+        foreach (EnemyAI enemigo in enemigos)
+        {
+            enemigo.ResetToPatrol();
+        }
         vidaActual = vidaMaxima;
-        Vida1.SetActive(true);
-        Vida2.SetActive(true);
-        Vida3.SetActive(true);
-        Vida4.SetActive(true);
+        //Vida1.SetActive(true);
+        //Vida2.SetActive(true);
+        //Vida3.SetActive(true);
+        //Vida4.SetActive(true);
+        ActualizarUI();
         Debug.Log("Jugador muerto");
     }
 }

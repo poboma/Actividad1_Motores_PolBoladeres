@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     public void EnterTPTrap(Transform respawnUbi)
     {
         scoreManager.RemovePoints(5);
-
+        if (currentState != GameState.Gameplay) return;
         currentState = GameState.Trap;
 
         trapTPUI.SetActive(true);
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
     public void OnToggleMap(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-
+        if (currentState != GameState.Gameplay) return;
         mapVisible = !mapVisible;
         mapCamera.ShowMap(mapVisible);
         puntero.SetActive(!mapVisible);
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
     public void TriggerFakeKeyTrap()
     {
         scoreManager.RemovePoints(10);
-
+        if (currentState != GameState.Gameplay) return;
         currentState = GameState.Trap;
 
 
@@ -265,7 +265,7 @@ public class GameManager : MonoBehaviour
     public void TriggerTrapFruit()
     {
         scoreManager.RemovePoints(5);
-
+        if (currentState != GameState.Gameplay) return;
         currentState = GameState.Trap;
 
         trapFruitUI.SetActive(true);

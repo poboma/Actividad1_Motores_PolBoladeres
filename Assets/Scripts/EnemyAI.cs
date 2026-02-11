@@ -40,10 +40,12 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Patrol:
                 Patrol();
                 DetectPlayer();
+                               
                 break;
 
             case EnemyState.Chase:
                 ChasePlayer();
+                
                 break;
         }
     }
@@ -57,9 +59,12 @@ public class EnemyAI : MonoBehaviour
         {
             case EnemyState.Patrol:
                 agent.speed = patrolSpeed;
+                Debug.Log("Te he perdido");
+
                 break;
             case EnemyState.Chase:
                 agent.speed = chaseSpeed;
+                Debug.Log("Te sigo");
                 break;
         }
     }
@@ -113,7 +118,13 @@ public class EnemyAI : MonoBehaviour
         agent.destination = player.position;
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance > losePlayerDistance)
-            currentState = EnemyState.Patrol;
+            SetState(EnemyState.Chase);
+    }
+
+    public void ResetToPatrol()
+    {
+        SetState(EnemyState.Patrol);
+        GoToNextPoint();
     }
 
 }

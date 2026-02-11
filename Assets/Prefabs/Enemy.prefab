@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  detectionRadius: 10
+  detectionRadius: 15
   losePlayerDistance: 40
   vision:
     serializedVersion: 2

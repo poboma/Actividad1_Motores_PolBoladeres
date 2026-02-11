@@ -10756,10 +10756,11 @@ MonoBehaviour:
   vidaMaxima: 4
   vidaActual: 0
   movimientoCapsula: {fileID: 1195567909}
-  Vida1: {fileID: 1848185775}
-  Vida2: {fileID: 189280876}
-  Vida3: {fileID: 1182885516}
-  Vida4: {fileID: 289131458}
+  vidas:
+  - {fileID: 1848185775}
+  - {fileID: 189280876}
+  - {fileID: 1182885516}
+  - {fileID: 289131458}
   "CooldownDa\xF1o": 2
 --- !u!1 &1241004529
 GameObject:
@@ -12358,6 +12359,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1195567921}
+    - target: {fileID: 4001079581798811621, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
+      propertyPath: losePlayerDistance
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4001079581798811621, guid: 42ab235b1f70a0a44b72cc15b19326ea, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 2
