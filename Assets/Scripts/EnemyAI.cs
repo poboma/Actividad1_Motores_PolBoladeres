@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        currentState = EnemyState.Patrol;
+        SetState(EnemyState.Patrol);
         GoToNextPoint();
     }
 
