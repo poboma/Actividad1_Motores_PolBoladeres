@@ -98,9 +98,10 @@ public class MovimientoCapsula : MonoBehaviour
     {
         jugador.enabled = false;
         scoreManager.ResetScore();
+        
         transform.position = ubicacionInicial.position;
         transform.rotation = ubicacionInicial.rotation;
-
+        
         xRotation = 0f;
         cameraHolder.localRotation = Quaternion.identity;
 
@@ -130,9 +131,10 @@ public class MovimientoCapsula : MonoBehaviour
     }
     public void OnReset(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            startOver();
-        
+        if (!context.performed) return;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void SetSpeed(float movementSpeed)

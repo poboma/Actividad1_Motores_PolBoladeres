@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
     public AudioSource EndAudio;
     public AudioSource ambientMusic;
 
+
+    public List<GameObject> enemigos = new List<GameObject>();
 
     private GameState currentState;
 
@@ -315,7 +318,14 @@ public class GameManager : MonoBehaviour
 
 
     #endregion
-
+    public void RespawnEnemigos()
+    {
+        foreach (GameObject enemigo in enemigos)
+        {
+            if (enemigo != null)
+                enemigo.SetActive(true);
+        }
+    }
 
 
 }

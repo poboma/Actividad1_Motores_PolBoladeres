@@ -11,7 +11,7 @@ public class Vida_Jugador : MonoBehaviour
     //public GameObject Vida2;
     //public GameObject Vida3;
     //public GameObject Vida4;
-
+    
     private bool PuedeRecibirDaño = true;
     public float CooldownDaño = 2.0f;
 
@@ -89,6 +89,8 @@ public class Vida_Jugador : MonoBehaviour
         foreach (EnemyAI enemigo in enemigos)
         {
             enemigo.ResetToPatrol();
+            GameManager.instance.RespawnEnemigos();
+            
         }
         vidaActual = vidaMaxima;
         //Vida1.SetActive(true);
