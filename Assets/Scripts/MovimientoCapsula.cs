@@ -46,8 +46,8 @@ public class MovimientoCapsula : MonoBehaviour
     private void Start()
     {
 
-       //transform.position = ubicacionInicial.position;
-       //transform.rotation = ubicacionInicial.rotation;
+       transform.position = ubicacionInicial.position;
+       transform.rotation = ubicacionInicial.rotation;
         anim = GetComponentInChildren<Animator>();
     }
     void Update()
