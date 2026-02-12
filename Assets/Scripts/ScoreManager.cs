@@ -35,6 +35,6 @@ public class ScoreManager : MonoBehaviour
     void UpdateScoreText()
     {
         if (scoreText != null)
-            scoreText.text = "Puntuación: " + score;
+            scoreText.text = "Puntuacion: " + score;
     }
 }

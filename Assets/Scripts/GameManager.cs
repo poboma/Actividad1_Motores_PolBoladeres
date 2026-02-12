@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject trapFruitUI;
     public GameObject puntero;
     public GameObject CanvasVida;
+    public GameObject luz;
 
     [Header("PUNTUACIÓN")]
     public ScoreManager scoreManager;
@@ -100,6 +101,9 @@ public class GameManager : MonoBehaviour
         trapFruitUI.SetActive(false);
         goodFruitUI.SetActive(false);
         puntero.SetActive(true);
+        luz.SetActive(false);
+
+        RenderSettings.fog = true;
 
 
         movimientoCapsula.enabled = true;
@@ -132,6 +136,10 @@ public class GameManager : MonoBehaviour
         puntero.SetActive(false);
         EndAudio.Play();
         CanvasVida.SetActive(false);
+        luz.SetActive(true);
+
+        RenderSettings.fog = false;
+
 
         movimientoCapsula.enabled = false;
         movimientoCapsula.canLook = false;
