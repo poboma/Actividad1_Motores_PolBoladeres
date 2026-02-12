@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public class Vida_Jugador : MonoBehaviour
@@ -11,11 +12,13 @@ public class Vida_Jugador : MonoBehaviour
     //public GameObject Vida2;
     //public GameObject Vida3;
     //public GameObject Vida4;
-    
+    public AudioSource muerteAudio;
     private bool PuedeRecibirDaño = true;
     public float CooldownDaño = 2.0f;
+    public AudioSource[] recibirDaño;
 
-    void Start()
+
+        void Start()
     {
         vidaActual = vidaMaxima;
         ActualizarUI();
@@ -28,12 +31,18 @@ public class Vida_Jugador : MonoBehaviour
             return;
         }
 
-        
+        int vidaAnterior = vidaActual;
+
         vidaActual += cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
 
         Debug.Log("Vida actual: " + vidaActual);
 
+        if (cantidad < 0 && vidaActual > 0 && recibirDaño.Length > 0)
+        {
+            int randomIndex = Random.Range(0, recibirDaño.Length);
+            recibirDaño[randomIndex].Play();
+        }
         ActualizarUI();
 
         //if (vidaActual == vidaMaxima)
@@ -55,7 +64,7 @@ public class Vida_Jugador : MonoBehaviour
         //{
         //    Vida2.SetActive(false);
         //}
-
+       
         if (vidaActual <= 0)
         {
             Morir();
@@ -74,6 +83,8 @@ public class Vida_Jugador : MonoBehaviour
         {
             vidas[i].SetActive(i < vidaActual);
         }
+        
+
     }
     IEnumerator Invencibilidad()
     {
@@ -82,8 +93,9 @@ public class Vida_Jugador : MonoBehaviour
         PuedeRecibirDaño = true;
     }
 
-    void Morir()
+    public void Morir()
     {
+        muerteAudio.Play();
         movimientoCapsula.startOver();
         EnemyAI[] enemigos = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
         foreach (EnemyAI enemigo in enemigos)

@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyAI : MonoBehaviour
 {
-    public enum EnemyState { Patrol, Chase }
-
+    public AudioClip[] muertesBrocoli;
+    public GameObject particulasBrocoli;
+    public AudioClip aggroBrocoli;
+    private AudioSource audiosource;
+    public int puntos = 20;
+    public enum EnemyState { Patrol, Chase, Dead}
+    
     
     [Header("REFERENCIAS")]
     public NavMeshAgent agent;
@@ -24,8 +30,11 @@ public class EnemyAI : MonoBehaviour
     private EnemyState currentState;
     private int currentPatrolIndex = 0;
 
-  
 
+    private void Awake()
+    {
+        audiosource = GetComponent<AudioSource>();  
+    }
 
     void Start()
     {
@@ -51,7 +60,7 @@ public class EnemyAI : MonoBehaviour
     }
     void SetState(EnemyState newState)
     {
-        if (currentState == newState) return; // si ya está en ese estado, no hacemos nada
+        if (currentState == newState) return; 
 
         currentState = newState;
 
@@ -64,6 +73,7 @@ public class EnemyAI : MonoBehaviour
                 break;
             case EnemyState.Chase:
                 agent.speed = chaseSpeed;
+                PlayAggro();
                 Debug.Log("Te sigo");
                 break;
         }
@@ -126,5 +136,33 @@ public class EnemyAI : MonoBehaviour
         SetState(EnemyState.Patrol);
         GoToNextPoint();
     }
+    public void EnemigoDisparado()
+    {
+        SetState(EnemyState.Dead);
+        GameManager.instance.scoreManager.AddPoints(puntos);
+        if (particulasBrocoli != null)
+        {
+            Instantiate(particulasBrocoli, transform.position, Quaternion.identity);
+        }
 
+
+        if (muertesBrocoli.Length > 0)
+        {
+            int randomIndex = Random.Range(0, muertesBrocoli.Length);
+            AudioSource.PlayClipAtPoint(muertesBrocoli[randomIndex], transform.position);
+        }
+
+
+
+        gameObject.SetActive(false);
+        //GameManager.instance.muerteEnemigo(this);
+
+    }
+    void PlayAggro()
+    {
+        if (aggroBrocoli != null && audiosource != null)
+        {
+            audiosource.PlayOneShot(aggroBrocoli);
+        }
+    }
 }

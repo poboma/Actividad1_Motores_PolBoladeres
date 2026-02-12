@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     [Header("EFECTOS")]
     public GameObject particulas;
+    //public GameObject particulasBrocoli;
 
     [Header("TRAMPA TELETRANSPORTE")]
     public float spinDuration = 1.5f;
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
     public AudioSource puertaAudio;
     public AudioSource EndAudio;
     public AudioSource ambientMusic;
+    //public AudioSource muerteBrocoli;
 
 
     public List<GameObject> enemigos = new List<GameObject>();
@@ -99,11 +101,13 @@ public class GameManager : MonoBehaviour
         goodFruitUI.SetActive(false);
         puntero.SetActive(true);
 
+
         movimientoCapsula.enabled = true;
         movimientoCapsula.canLook = true;
         movimientoCapsula.ResetSpeed();
 
         particulas.SetActive(false);
+        //particulasBrocoli.SetActive(false);
 
         mapCamera.ShowMap(false);
         mapVisible = true;
@@ -127,12 +131,13 @@ public class GameManager : MonoBehaviour
         goodFruitUI.SetActive(false);
         puntero.SetActive(false);
         EndAudio.Play();
-
+        CanvasVida.SetActive(false);
 
         movimientoCapsula.enabled = false;
         movimientoCapsula.canLook = false;
 
         particulas.SetActive(true);
+        //particulasBrocoli.SetActive(false);
         mapCamera.ShowMap(false);
 
 
@@ -326,6 +331,17 @@ public class GameManager : MonoBehaviour
                 enemigo.SetActive(true);
         }
     }
+
+    //public void muerteEnemigo(int puntos)
+    //{
+    //    scoreManager.AddPoints(puntos);
+    //    //muerteBrocoli.Play();
+    //    //particulasBrocoli.SetActive(true);
+    //    //enemigo.gameObject.SetActive(false);
+        
+    //}
+
+    
 
 
 }

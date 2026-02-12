@@ -34,7 +34,7 @@ public class CursorDisparador : MonoBehaviour
                 {
                     // Busca el script Boton en el objeto golpeado
                     // Llama al método Pulsar()
-                    hit.collider.GetComponent<Boton>().Pulsar();
+                    hit.collider.GetComponent<EnemyAI>().EnemigoDisparado();
                 }
             }
             //Debug.Log(Mouse.current.position.ReadValue());
